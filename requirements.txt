@@ -1,0 +1,8 @@
+# freqtrade
+git+https://github.com/freqtrade/freqtrade.git@stable
+
+# NostalgiaForInfinityNext
+pandas-ta
+
+# plot
+plotly==5.3.1
