@@ -134,10 +134,11 @@ user_data/data/*.json
 # IntelliJ
 .idea
 
-user_data/data/*/*.json
+user_data/config.json
 user_data/backtest_results
 user_data/configs/config-backtesting-*.json
 user_data/configs/config-*.json
+user_data/data/*/*.json
 user_data/hyperopt_results
 user_data/hyperopts
 user_data/logs
