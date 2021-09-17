@@ -37,5 +37,18 @@ setup-venv:
 	pip install -r requirements.txt
 	freqtrade install-ui
 
+setup-repo:
+	git remote add upstream https://github.com/iterativv/NostalgiaForInfinity.git
+	git fetch upstream
+	git checkout ${BRANCH}
+
 make-config:
 	@python tools/make_config.py ${EXCHANGE} ${STRATEGY}
+
+update-repo:
+	git checkout main
+	git fetch upstream/main
+	git pull --ff
+	git rebase upstream
+	git checkout ${DEV_BRANCH}
+	git rebase main
