@@ -44,11 +44,3 @@ setup-repo:
 
 make-config:
 	@python tools/make_config.py ${EXCHANGE} ${STRATEGY}
-
-update-repo:
-	git checkout main
-	git fetch upstream/main
-	git pull --ff
-	git rebase upstream
-	git checkout ${DEV_BRANCH}
-	git rebase main
