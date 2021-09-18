@@ -1,0 +1,24 @@
+---
+version: '3.7'
+services:
+  freqtrade:
+    image: freqtradeorg/freqtrade:stable
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.prod
+      labels:
+        - version=${BOT_VERSION}
+    restart: unless-stopped
+    container_name: freqtrade-${STRATEGY}
+    volumes:
+      - ./user_data:/freqtrade/user_data
+      - ./${STRATEGY}.py:/freqtrade/${STRATEGY}.py
+    ports:
+      - ${EXT_PORT}:8080
+    command: >
+      trade
+      --logfile /freqtrade/user_data/logs/freqtrade.log
+      --strategy ${STRATEGY}
+      --config user_data/configs/config-${STRATEGY}.json
+      --logfile user_data/logs/freqtrade-${STRATEGY}.log
+      --db-url sqlite:///user_data/${STRATEGY}.sqlite

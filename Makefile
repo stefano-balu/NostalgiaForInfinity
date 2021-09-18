@@ -3,6 +3,18 @@ include .env
 
 TIMERANGE=${START}-${END}
 
+
+all: docker-pull docker-compose-build docker-compose-up
+
+docker-pull:
+	docker-compose -f docker-compose-prod.yml pull
+
+docker-compose-build:
+	docker-compose -f docker-compose-prod.yml build
+
+docker-compose-up: make-config
+	docker-compose -f docker-compose-prod.yml up
+
 start: make-config
 	freqtrade trade \
 		--strategy ${STRATEGY} \

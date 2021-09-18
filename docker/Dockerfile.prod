@@ -1,0 +1,5 @@
+FROM freqtradeorg/freqtrade:stable
+
+COPY --chown=1000:1000  requirements-docker.txt /freqtrade/requirements-custom.txt
+
+RUN pip install --user --no-cache-dir --no-build-isolation -r /freqtrade/requirements-custom.txt
