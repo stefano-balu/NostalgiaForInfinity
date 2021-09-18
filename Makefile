@@ -13,7 +13,7 @@ docker-compose-build:
 	docker-compose -f docker-compose-prod.yml build
 
 docker-compose-up: make-config
-	docker-compose -f docker-compose-prod.yml up
+	docker-compose -f docker-compose-prod.yml up -d
 
 start: make-config
 	freqtrade trade \
