@@ -17,7 +17,6 @@ services:
       - ${EXT_PORT}:8080
     command: >
       trade
-      --logfile /freqtrade/user_data/logs/freqtrade.log
       --strategy ${STRATEGY}
       --config user_data/configs/config-${STRATEGY}.json
       --logfile user_data/logs/freqtrade-${STRATEGY}.log

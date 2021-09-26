@@ -6,7 +6,9 @@ TIMERANGE=${START}-${END}
 
 all: docker-pull docker-compose-build docker-compose-up
 
-docker-pull:
+update: git-update docker-compose-pull docker-compose-build docker-compose-up
+
+docker-compose-pull:
 	docker-compose -f docker-compose-prod.yml pull
 
 docker-compose-build:
@@ -56,3 +58,6 @@ setup-repo:
 
 make-config:
 	@python tools/make_config.py ${EXCHANGE} ${STRATEGY}
+
+git-update:
+	git pull --ff
