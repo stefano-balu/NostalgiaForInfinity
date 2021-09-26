@@ -6,7 +6,12 @@ TIMERANGE=${START}-${END}
 
 all: docker-pull docker-compose-build docker-compose-up
 
-docker-pull:
+update: git-pull docker-compose-pull docker-compose-build docker-compose-up
+
+git-pull:
+	git pull --ff
+
+docker-compose-pull:
 	docker-compose -f docker-compose-prod.yml pull
 
 docker-compose-build:
